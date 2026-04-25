@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - FATEC Catalogo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="login-page">
+
+<main class="login-shell">
+  <section class="login-panel">
+    <div class="login-header">
+      <span class="login-kicker">Sistema Academico</span>
+      <h1>FATEC Catalogo</h1>
+      <p>Entre para consultar produtos e categorias do catalogo.</p>
+    </div>
+
+    <div class="login-body">
+      <div th:if="${param.error}" class="alert-erro mb-3">
+        Usuario ou senha invalidos.
+      </div>
+
+      <div th:if="${param.logout}" class="alert-success mb-3">
+        Voce saiu com sucesso.
+      </div>
+
+      <form th:action="@{/login}" method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label">Usuario</label>
+          <input id="username"
+                 type="text"
+                 name="username"
+                 class="form-control"
+                 placeholder="Digite seu usuario"
+                 autocomplete="username"
+                 autofocus>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Senha</label>
+          <input id="password"
+                 type="password"
+                 name="password"
+                 class="form-control"
+                 placeholder="Digite sua senha"
+                 autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary login-submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
